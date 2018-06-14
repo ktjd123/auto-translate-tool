@@ -92,6 +92,10 @@ for item in jsFileName{
 		var itemToReplace = try String(contentsOfFile: item, encoding: .utf8)
 		
 		for strings in sortedTranslationDic{
+			if(strings.value == ""){
+				print("WARNING - 번역 문자열이 존재하지 않습니다", strings.key, strings.value)
+				continue
+			}
 			itemToReplace = itemToReplace.replacingOccurrences(of: strings.key, with: strings.value)
 			print("translated")
 		}
@@ -100,6 +104,5 @@ for item in jsFileName{
 		
 	}
 }
-
 print()
 print("번역되었습니다")
